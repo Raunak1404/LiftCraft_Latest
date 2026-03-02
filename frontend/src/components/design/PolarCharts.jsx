@@ -6,19 +6,19 @@ import {
 } from 'recharts';
 
 const CHART_COLORS = {
-  primary: '#22d3ee',    // cyan-400
-  secondary: '#a78bfa',  // violet-400
+  primary: '#A78BFA',    // violet-400
+  secondary: '#F0ABFC',  // fuchsia-300
   accent: '#34d399',     // emerald-400
-  grid: '#334155',       // slate-700
-  text: '#94a3b8',       // slate-400
+  grid: '#1e1e2e',       // obsidian grid
+  text: '#71717a',       // zinc-500
   designDot: '#f59e0b',  // amber-500
 };
 
 const CustomTooltip = ({ active, payload, label, xLabel, yLabel }) => {
   if (!active || !payload || !payload.length) return null;
   return (
-    <div className="glass-effect rounded-lg px-3 py-2 border border-slate-600/50 shadow-xl">
-      <p className="text-slate-300 text-xs mb-1">
+    <div className="surface-card rounded-lg px-3 py-2 border border-white/[0.06] shadow-xl">
+      <p className="text-zinc-400 text-xs mb-1">
         {xLabel}: <span className="text-white font-mono">{typeof label === 'number' ? label.toFixed(2) : label}</span>
       </p>
       {payload.map((entry, i) => (
@@ -31,8 +31,8 @@ const CustomTooltip = ({ active, payload, label, xLabel, yLabel }) => {
 };
 
 const ChartCard = ({ title, children }) => (
-  <div className="glass-effect rounded-xl p-4 border border-slate-700/50">
-    <h4 className="text-sm font-semibold text-slate-300 mb-3 text-center">{title}</h4>
+  <div className="surface-card rounded-xl p-4 border border-white/[0.04]">
+    <h4 className="text-xs font-semibold text-zinc-500 mb-3 text-center uppercase tracking-wider">{title}</h4>
     <div className="h-56">
       {children}
     </div>
@@ -73,28 +73,28 @@ const PolarCharts = ({ polarData, designPoint, alpha, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-modal-backdrop">
-      <div className="glass-effect rounded-2xl p-6 max-w-6xl w-full max-h-[90vh] overflow-y-auto animate-modal-content">
+    <div className="fixed inset-0 bg-[#06060a]/95 backdrop-blur-xl z-50 flex items-center justify-center p-4 animate-modal-backdrop">
+      <div className="surface-card-elevated rounded-2xl p-6 max-w-6xl w-full max-h-[90vh] overflow-y-auto animate-modal-content border border-violet-500/10 shadow-2xl shadow-violet-500/5">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <TrendingUp className="w-7 h-7 text-purple-400" />
-              <div className="absolute inset-0 blur-lg bg-purple-400/30 animate-breathe" />
+              <TrendingUp className="w-6 h-6 text-violet-400" />
+              <div className="absolute inset-0 blur-lg bg-violet-500/20 animate-breathe" />
             </div>
-            <h3 className="text-2xl font-bold text-gradient">Aerodynamic Polars</h3>
+            <h3 className="text-2xl font-bold text-gradient tracking-tight">Aerodynamic Polars</h3>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors btn-press p-2 hover:bg-white/10 rounded-lg"
+            className="text-zinc-500 hover:text-white transition-colors btn-press p-2 hover:bg-white/[0.04] rounded-lg"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <p className="text-slate-400 text-sm mb-4">
+        <p className="text-zinc-500 text-sm mb-4">
           Interactive aerodynamic performance curves. Hover for exact values.
-          <span className="inline-block w-3 h-3 rounded-full bg-amber-500 ml-2 align-middle" /> = design point
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-500 ml-2 align-middle" /> = design point
         </p>
 
         {/* Charts Grid */}
@@ -181,7 +181,7 @@ const PolarCharts = ({ polarData, designPoint, alpha, onClose }) => {
                 { label: 'CM', value: dp.CM, precision: 4 },
               ].map(({ label, value, unit, precision }) => (
                 <div key={label} className="flex justify-between items-center">
-                  <span className="text-slate-400 text-sm">{label}</span>
+                  <span className="text-zinc-500 text-sm">{label}</span>
                   <span className="text-white font-mono font-bold text-sm">
                     {value != null ? value.toFixed(precision) : 'N/A'}{unit || ''}
                   </span>
@@ -195,7 +195,7 @@ const PolarCharts = ({ polarData, designPoint, alpha, onClose }) => {
         <div className="flex justify-center mt-6">
           <button
             onClick={onClose}
-            className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all btn-press font-semibold"
+            className="px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-xl hover:shadow-lg hover:shadow-violet-500/20 transition-all btn-press font-semibold"
           >
             Close
           </button>

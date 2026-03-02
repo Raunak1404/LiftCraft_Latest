@@ -51,20 +51,20 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto animate-modal-backdrop">
-      <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col animate-modal-content">
+    <div className="fixed inset-0 bg-[#06060a]/95 backdrop-blur-xl z-50 flex items-center justify-center p-4 overflow-y-auto animate-modal-backdrop">
+      <div className="surface-card-elevated border border-violet-500/10 rounded-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden shadow-2xl shadow-violet-500/5 flex flex-col animate-modal-content">
         {/* Header */}
-        <div className="p-4 sm:p-6 border-b border-cyan-500/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-950/50">
+        <div className="p-4 sm:p-6 border-b border-white/[0.04] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#06060a]/50">
           <div className="flex items-center gap-3 sm:gap-4">
             <div className="relative">
-              <Zap className="w-7 h-7 text-cyan-400" />
-              <div className="absolute inset-0 blur-xl bg-cyan-400/30" />
+              <Zap className="w-6 h-6 text-violet-400" />
+              <div className="absolute inset-0 blur-xl bg-violet-500/25" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gradient">
+            <h2 className="text-xl sm:text-2xl font-bold text-gradient tracking-tight">
               Design History
             </h2>
             {comparisonMode && (
-              <span className="text-xs sm:text-sm text-cyan-300 bg-cyan-500/20 px-2 sm:px-3 py-1 rounded-full border border-cyan-500/30 animate-scale-in-bounce tabular-nums">
+              <span className="text-xs text-violet-300 bg-violet-500/10 px-3 py-1 rounded-full border border-violet-500/20 animate-scale-in-bounce tabular-nums font-medium">
                 {selectedDesigns.length} selected
               </span>
             )}
@@ -73,9 +73,9 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
             {!comparisonMode ? (
               <button
                 onClick={() => setComparisonMode(true)}
-                className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all btn-press flex items-center justify-center gap-2 text-sm"
+                className="flex-1 sm:flex-none px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-violet-500/20 transition-all btn-press flex items-center justify-center gap-2 text-sm"
               >
-                <GitCompare className="w-4 h-4 sm:w-5 sm:h-5" />
+                <GitCompare className="w-4 h-4" />
                 <span>Compare Designs</span>
               </button>
             ) : (
@@ -83,14 +83,14 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
                 <button
                   onClick={startComparison}
                   disabled={selectedDesigns.length < 2}
-                  className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed btn-press flex items-center justify-center gap-2 text-sm"
+                  className="flex-1 sm:flex-none px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed btn-press flex items-center justify-center gap-2 text-sm"
                 >
-                  <GitCompare className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <GitCompare className="w-4 h-4" />
                   Compare ({selectedDesigns.length})
                 </button>
                 <button
                   onClick={() => { setComparisonMode(false); setSelectedDesigns([]); }}
-                  className="px-3 sm:px-4 py-2 bg-slate-700 text-white font-semibold rounded-xl hover:bg-slate-600 transition-all btn-press text-sm"
+                  className="px-4 py-2 bg-white/[0.04] text-white font-semibold rounded-xl hover:bg-white/[0.06] transition-all btn-press text-sm border border-white/[0.06]"
                 >
                   Cancel
                 </button>
@@ -98,9 +98,9 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
             )}
             <button
               onClick={onClose}
-              className="p-2 hover:bg-slate-800 rounded-xl transition-all btn-press"
+              className="p-2 hover:bg-white/[0.04] rounded-xl transition-all btn-press"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
+              <X className="w-5 h-5 text-zinc-500" />
             </button>
           </div>
         </div>
@@ -110,46 +110,46 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20">
               <div className="relative">
-                <Zap className="w-16 h-16 text-cyan-400 animate-breathe" />
-                <div className="absolute inset-0 blur-2xl bg-cyan-400/30 animate-breathe" />
+                <Zap className="w-14 h-14 text-violet-400 animate-breathe" />
+                <div className="absolute inset-0 blur-2xl bg-violet-500/25 animate-breathe" />
               </div>
-              <p className="text-cyan-300 text-sm sm:text-base mt-4">Loading designs...</p>
+              <p className="text-violet-300/80 text-sm mt-4 font-medium">Loading designs...</p>
             </div>
           ) : designs.length === 0 ? (
             <div className="text-center py-20 animate-fade-in-up">
-              <FileText className="w-16 h-16 sm:w-20 sm:h-20 text-cyan-400/30 mx-auto mb-4" />
-              <p className="text-cyan-300/70 text-base sm:text-lg">No designs yet</p>
-              <p className="text-cyan-400/50 text-xs sm:text-sm mt-2">Create your first airfoil design to get started</p>
+              <FileText className="w-16 h-16 text-violet-400/20 mx-auto mb-4" />
+              <p className="text-zinc-400 text-base">No designs yet</p>
+              <p className="text-zinc-600 text-sm mt-2">Create your first airfoil design to get started</p>
             </div>
           ) : (
-            <div className="space-y-3 sm:space-y-4 stagger-children">
+            <div className="space-y-3 stagger-children">
               {designs.map((design, index) => {
                 const isSelected = selectedDesigns.find(d => d.id === design.id);
 
                 return (
                   <div
                     key={design.id}
-                    className={`glass-effect border rounded-xl p-3 sm:p-4 transition-all duration-200 animate-fade-in-up ${
-                      comparisonMode ? 'cursor-pointer hover:border-cyan-400/60' : 'hover:border-cyan-400/40'
+                    className={`surface-card border rounded-xl p-3 sm:p-4 transition-all duration-200 animate-fade-in-up ${
+                      comparisonMode ? 'cursor-pointer hover:border-violet-400/30' : 'hover:border-violet-400/20'
                     } ${
-                      isSelected ? 'border-cyan-400 ring-2 ring-cyan-400/30 bg-cyan-500/10' : 'border-cyan-500/20'
+                      isSelected ? 'border-violet-400/50 ring-1 ring-violet-400/20 bg-violet-500/[0.04]' : 'border-white/[0.04]'
                     }`}
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    style={{ animationDelay: `${index * 40}ms` }}
                     onClick={() => comparisonMode && toggleDesignSelection(design)}
                   >
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-3">
-                      <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+                      <div className="flex items-center gap-2.5 w-full sm:w-auto">
                         {comparisonMode && (
                           <input
                             type="checkbox"
                             checked={!!isSelected}
                             onChange={() => toggleDesignSelection(design)}
-                            className="w-4 h-4 sm:w-5 sm:h-5 rounded border-cyan-500/50 text-cyan-500 focus:ring-2 focus:ring-cyan-400/50 bg-slate-700 cursor-pointer accent-cyan-500"
+                            className="w-4 h-4 rounded border-violet-500/40 text-violet-500 focus:ring-2 focus:ring-violet-400/30 bg-white/[0.03] cursor-pointer accent-violet-500"
                             onClick={(e) => e.stopPropagation()}
                           />
                         )}
-                        <div className="flex items-center gap-2 text-cyan-400/70 text-xs sm:text-sm">
-                          <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <div className="flex items-center gap-2 text-zinc-600 text-xs">
+                          <Clock className="w-3.5 h-3.5" />
                           <span className="hidden sm:inline">{design.createdAt?.toDate().toLocaleString()}</span>
                           <span className="sm:hidden">{design.createdAt?.toDate().toLocaleDateString()}</span>
                         </div>
@@ -157,59 +157,59 @@ const HistoryModal = ({ isOpen, designs, loading, onClose, onDelete, onShowCompa
                       <div className="flex gap-2 w-full sm:w-auto">
                         <button
                           onClick={(e) => { e.stopPropagation(); handleDownloadPDF(design); }}
-                          className="flex-1 sm:flex-none px-2 sm:px-3 py-1.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-300 rounded-lg hover:bg-emerald-600/30 transition-all btn-press text-xs sm:text-sm flex items-center justify-center gap-1"
+                          className="flex-1 sm:flex-none px-3 py-1.5 bg-emerald-500/8 border border-emerald-500/15 text-emerald-300 rounded-lg hover:bg-emerald-500/12 transition-all btn-press text-xs flex items-center justify-center gap-1.5"
                         >
-                          <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                          <Download className="w-3.5 h-3.5" />
                           <span className="hidden sm:inline">PDF</span>
                         </button>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleDelete(design.id); }}
-                          className="flex-1 sm:flex-none px-2 sm:px-3 py-1.5 bg-red-600/20 border border-red-500/50 text-red-300 rounded-lg hover:bg-red-600/30 transition-all btn-press text-xs sm:text-sm flex items-center justify-center gap-1"
+                          className="flex-1 sm:flex-none px-3 py-1.5 bg-rose-500/8 border border-rose-500/15 text-rose-300 rounded-lg hover:bg-rose-500/12 transition-all btn-press text-xs flex items-center justify-center gap-1.5"
                         >
-                          <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                          <Trash2 className="w-3.5 h-3.5" />
                           <span className="hidden sm:inline">Delete</span>
                         </button>
                       </div>
                     </div>
 
                     {/* Design Parameters */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-xs sm:text-sm">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
                       <div>
-                        <p className="text-cyan-400/70">CL Target</p>
+                        <p className="text-zinc-600 font-medium">CL Target</p>
                         <p className="text-white font-semibold tabular-nums">{design.inputs?.CL_target?.toFixed(2)}</p>
                       </div>
                       <div>
-                        <p className="text-cyan-400/70">Alpha</p>
+                        <p className="text-zinc-600 font-medium">Alpha</p>
                         <p className="text-white font-semibold tabular-nums">{design.inputs?.alpha?.toFixed(1)}&deg;</p>
                       </div>
                       <div>
-                        <p className="text-cyan-400/70">Reynolds</p>
+                        <p className="text-zinc-600 font-medium">Reynolds</p>
                         <p className="text-white font-semibold tabular-nums">{design.inputs?.Re?.toExponential(1)}</p>
                       </div>
                       <div>
-                        <p className="text-cyan-400/70">Type</p>
+                        <p className="text-zinc-600 font-medium">Type</p>
                         <p className="text-white font-semibold capitalize">{design.inputs?.airfoil_type}</p>
                       </div>
                     </div>
 
                     {/* Results */}
                     {design.results && (
-                      <div className="mt-3 pt-3 border-t border-cyan-500/20 grid grid-cols-4 gap-2 sm:gap-3 text-xs sm:text-sm">
+                      <div className="mt-3 pt-3 border-t border-white/[0.04] grid grid-cols-4 gap-2.5 text-xs">
                         <div>
-                          <p className="text-cyan-400/70">CL</p>
-                          <p className="text-cyan-300 font-bold tabular-nums">{design.results.CL?.toFixed(4)}</p>
+                          <p className="text-zinc-600 font-medium">CL</p>
+                          <p className="text-violet-300 font-bold tabular-nums">{design.results.CL?.toFixed(4)}</p>
                         </div>
                         <div>
-                          <p className="text-cyan-400/70">CD</p>
-                          <p className="text-cyan-300 font-bold tabular-nums">{design.results.CD?.toFixed(6)}</p>
+                          <p className="text-zinc-600 font-medium">CD</p>
+                          <p className="text-emerald-300 font-bold tabular-nums">{design.results.CD?.toFixed(6)}</p>
                         </div>
                         <div>
-                          <p className="text-cyan-400/70">L/D</p>
-                          <p className="text-cyan-300 font-bold tabular-nums">{design.results.LD?.toFixed(2)}</p>
+                          <p className="text-zinc-600 font-medium">L/D</p>
+                          <p className="text-amber-300 font-bold tabular-nums">{design.results.LD?.toFixed(2)}</p>
                         </div>
                         <div>
-                          <p className="text-cyan-400/70">CM</p>
-                          <p className="text-cyan-300 font-bold tabular-nums">{design.results.CM?.toFixed(4)}</p>
+                          <p className="text-zinc-600 font-medium">CM</p>
+                          <p className="text-rose-300 font-bold tabular-nums">{design.results.CM?.toFixed(4)}</p>
                         </div>
                       </div>
                     )}

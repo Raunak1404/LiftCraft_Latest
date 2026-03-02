@@ -47,15 +47,15 @@ const FlowVisualization = ({ airfoilData, alpha, onClose }) => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-modal-backdrop">
-        <div className="glass-effect rounded-2xl p-8 max-w-4xl w-full animate-modal-content">
+      <div className="fixed inset-0 bg-[#06060a]/95 backdrop-blur-xl z-50 flex items-center justify-center p-4 animate-modal-backdrop">
+        <div className="surface-card-elevated rounded-2xl p-8 max-w-4xl w-full animate-modal-content border border-violet-500/10">
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
-              <Loader className="w-12 h-12 text-cyan-400 animate-spin" />
-              <div className="absolute inset-0 blur-xl bg-cyan-400/30 animate-breathe" />
+              <Loader className="w-12 h-12 text-violet-400 animate-spin" />
+              <div className="absolute inset-0 blur-xl bg-violet-500/25 animate-breathe" />
             </div>
-            <p className="text-white text-lg animate-fade-in">Computing flow field...</p>
-            <p className="text-slate-400 text-sm animate-fade-in" style={{ animationDelay: '200ms' }}>Generating streamlines and velocity contours</p>
+            <p className="text-white text-lg animate-fade-in font-medium">Computing flow field...</p>
+            <p className="text-zinc-500 text-sm animate-fade-in" style={{ animationDelay: '200ms' }}>Generating streamlines and velocity contours</p>
           </div>
         </div>
       </div>
@@ -64,18 +64,18 @@ const FlowVisualization = ({ airfoilData, alpha, onClose }) => {
 
   if (error) {
     return (
-      <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-modal-backdrop">
-        <div className="glass-effect rounded-2xl p-8 max-w-4xl w-full animate-modal-content">
+      <div className="fixed inset-0 bg-[#06060a]/95 backdrop-blur-xl z-50 flex items-center justify-center p-4 animate-modal-backdrop">
+        <div className="surface-card-elevated rounded-2xl p-8 max-w-4xl w-full animate-modal-content border border-violet-500/10">
           <div className="flex justify-between items-start mb-4">
-            <h3 className="text-2xl font-bold text-red-400">Error</h3>
-            <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors btn-press p-2 hover:bg-white/10 rounded-lg">
+            <h3 className="text-2xl font-bold text-rose-400">Error</h3>
+            <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors btn-press p-2 hover:bg-white/[0.04] rounded-lg">
               <X className="w-6 h-6" />
             </button>
           </div>
           <p className="text-white mb-4">{error}</p>
           <button
             onClick={onClose}
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all btn-press"
+            className="px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-xl hover:shadow-lg hover:shadow-violet-500/20 transition-all btn-press"
           >
             Close
           </button>
@@ -124,34 +124,34 @@ const FlowVisualization = ({ airfoilData, alpha, onClose }) => {
   const maxVel = Math.max(...velocityFlat);
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-modal-backdrop">
-      <div className="glass-effect rounded-2xl p-6 sm:p-8 max-w-7xl w-full max-h-[90vh] overflow-y-auto animate-modal-content">
+    <div className="fixed inset-0 bg-[#06060a]/95 backdrop-blur-xl z-50 flex items-center justify-center p-4 animate-modal-backdrop">
+      <div className="surface-card-elevated rounded-2xl p-6 sm:p-8 max-w-7xl w-full max-h-[90vh] overflow-y-auto animate-modal-content border border-violet-500/10 shadow-2xl shadow-violet-500/5">
         {/* Header */}
         <div className="flex justify-between items-start mb-6 animate-fade-in">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <Wind className="w-8 h-8 text-cyan-400" />
-              <div className="absolute inset-0 blur-lg bg-cyan-400/20" />
+              <Wind className="w-7 h-7 text-violet-400" />
+              <div className="absolute inset-0 blur-lg bg-violet-500/20" />
             </div>
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-gradient">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gradient tracking-tight">
                 Flow Visualization
               </h3>
-              <p className="text-slate-400 text-sm mt-1">
+              <p className="text-zinc-500 text-sm mt-1">
                 Streamlines + Velocity Field • α = {alpha}°
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg btn-press"
+            className="text-zinc-500 hover:text-white transition-colors p-2 hover:bg-white/[0.04] rounded-lg btn-press"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* SVG Visualization */}
-        <div className="bg-slate-900/50 rounded-xl p-4 mb-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="bg-[#06060a]/60 rounded-xl p-4 mb-6 animate-fade-in-up border border-white/[0.04]" style={{ animationDelay: '100ms' }}>
           <svg width="100%" viewBox={`0 0 ${width} ${height}`} className="w-full h-auto">
             {/* Background velocity contours */}
             {flowData.x_grid.map((x, i) => 
@@ -254,42 +254,42 @@ const FlowVisualization = ({ airfoilData, alpha, onClose }) => {
 
         {/* Legend */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 stagger-children">
-          <div className="glass-effect rounded-xl p-4 border border-cyan-500/30 card-hover animate-fade-in-up">
-            <h4 className="text-cyan-400 font-semibold mb-2 flex items-center gap-2">
+          <div className="surface-card rounded-xl p-4 border border-violet-500/15 card-hover animate-fade-in-up">
+            <h4 className="text-violet-400 font-semibold mb-2 flex items-center gap-2 text-sm">
               <Wind className="w-4 h-4" />
               Velocity Field
             </h4>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-12 h-4 bg-gradient-to-r from-blue-500 via-cyan-400 via-yellow-400 to-red-500 rounded"></div>
-              <span className="text-slate-300 text-sm">Slow → Fast</span>
+              <div className="w-12 h-3 bg-gradient-to-r from-blue-500 via-cyan-400 via-yellow-400 to-red-500 rounded"></div>
+              <span className="text-zinc-400 text-sm">Slow → Fast</span>
             </div>
-            <p className="text-slate-400 text-sm">
+            <p className="text-zinc-500 text-sm">
               Range: {minVel.toFixed(2)} - {maxVel.toFixed(2)} V∞
             </p>
           </div>
 
-          <div className="glass-effect rounded-xl p-4 border border-white/20 card-hover animate-fade-in-up">
-            <h4 className="text-white font-semibold mb-2">Streamlines</h4>
-            <p className="text-slate-400 text-sm mb-1">
+          <div className="surface-card rounded-xl p-4 border border-white/[0.06] card-hover animate-fade-in-up">
+            <h4 className="text-white font-semibold mb-2 text-sm">Streamlines</h4>
+            <p className="text-zinc-500 text-sm mb-1">
               {flowData.streamlines.length} streamlines computed
             </p>
-            <p className="text-slate-400 text-sm">
+            <p className="text-zinc-500 text-sm">
               White curves show flow paths
             </p>
           </div>
         </div>
 
         {/* Info */}
-        <div className="glass-effect rounded-xl p-4 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/20 mb-6 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-          <h4 className="text-cyan-400 font-semibold mb-2 flex items-center gap-2">
+        <div className="surface-card rounded-xl p-4 bg-violet-500/[0.02] border border-violet-500/10 mb-6 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+          <h4 className="text-violet-400 font-semibold mb-2 flex items-center gap-2 text-sm">
             <Wind className="w-4 h-4" />
             Understanding Flow Visualization
           </h4>
-          <ul className="text-slate-300 text-sm space-y-1">
+          <ul className="text-zinc-400 text-sm space-y-1">
             <li>• <span className="text-white">White curves</span> = Streamlines (path of air particles)</li>
             <li>• <span className="text-blue-400">Blue regions</span> = Slow flow (low velocity)</li>
-            <li>• <span className="text-red-400">Red regions</span> = Fast flow (high velocity)</li>
-            <li>• <span className="text-red-500">Red dot</span> = Stagnation point (flow stops, splits)</li>
+            <li>• <span className="text-rose-400">Red regions</span> = Fast flow (high velocity)</li>
+            <li>• <span className="text-rose-500">Red dot</span> = Stagnation point (flow stops, splits)</li>
             <li>• Flow accelerates over airfoil top → Creates lift!</li>
           </ul>
         </div>
@@ -297,7 +297,7 @@ const FlowVisualization = ({ airfoilData, alpha, onClose }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 btn-press hover:scale-[1.01] flex items-center justify-center gap-2 animate-fade-in-up"
+          className="w-full px-6 py-3.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg hover:shadow-violet-500/20 transition-all duration-300 btn-press hover:scale-[1.01] flex items-center justify-center gap-2 animate-fade-in-up"
           style={{ animationDelay: '400ms' }}
         >
           Close

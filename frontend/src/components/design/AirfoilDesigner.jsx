@@ -121,26 +121,29 @@ const AirfoilDesigner = ({ onShowHistory }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden animate-fade-in">
+    <div className="min-h-screen bg-[#06060a] relative overflow-hidden animate-fade-in">
       <LightRays
         raysOrigin="top-center"
-        raysColor="#06b6d4"
-        raysSpeed={0.5}
-        lightSpread={2.5}
-        rayLength={1.5}
+        raysColor="#8B5CF6"
+        raysSpeed={0.4}
+        lightSpread={3}
+        rayLength={1.8}
         pulsating={false}
-        fadeDistance={0.8}
-        saturation={0.8}
+        fadeDistance={0.9}
+        saturation={0.7}
         followMouse={true}
-        mouseInfluence={0.08}
-        noiseAmount={0.05}
-        distortion={0.1}
+        mouseInfluence={0.06}
+        noiseAmount={0.04}
+        distortion={0.08}
       />
 
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0 animate-fade-in" style={{
-        backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                         linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
+      {/* Ambient gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-violet-600/[0.04] rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-fuchsia-600/[0.03] rounded-full blur-[130px] pointer-events-none" />
+
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0 animate-fade-in" style={{
+        backgroundImage: `radial-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px)`,
+        backgroundSize: '32px 32px'
       }} />
 
       <Header
@@ -152,7 +155,7 @@ const AirfoilDesigner = ({ onShowHistory }) => {
         onLogout={logout}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div className="animate-fade-in-up">
           {!pdfReady ? (
             <div className="grid lg:grid-cols-5 gap-4 sm:gap-6 stagger-children">
